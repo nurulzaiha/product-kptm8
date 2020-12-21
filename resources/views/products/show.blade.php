@@ -28,8 +28,7 @@
 <input type ="text" name="price" class="form-control" required value="{{$product->price}}" readonly>
 </div>
 
-
-<strong><a class="nav-Link" href="{{route('product:list')}}">Back to product list</a></strong>
+<a href="javascript:history.back()" class="btn btn-primary">Back to Product list</a>
 </div>
             
                 </div>

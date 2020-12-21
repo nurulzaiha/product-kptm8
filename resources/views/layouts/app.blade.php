@@ -36,7 +36,7 @@
                     <li class="navbar-nav mr-auto">
 <a class="nav-Link" href="{{route('product:list')}}">Product List</a>
 </li>
-<br>
+&nbsp;&nbsp;
 <li class="navbar-nav mr-auto">
 <a class="nav-Link" href="{{route('product:create')}}">Product Create form</a>
 </li>
