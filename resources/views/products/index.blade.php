@@ -6,6 +6,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+
+        @if(session()->has('alert-type'))
+        <div class="alert {{session()->get('alert-type')}}">
+        {{session()->get('alert')}}
+        </div>
+        @endif
+
+
+
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -32,6 +41,8 @@
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
             <td>{{$product->description}}</td>
+
+           
             <td>{{$product->price}}</td>
             <td>{{$product->user_id}}</td>
             <td>{{$product->user->name}}</td>

@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        // query training
+        // query product
        $users = \App\Models\User::all();
-   // dd($trainings); //cara nak debug
+   // dd($products); //cara nak debug
 
     
     //return to view 
-    //resources/views/trainings/index.blade.php
-    //return view('trainings.index');
+    //resources/views/products/index.blade.php
+    //return view('products.index');
     return view('users.index',compact('users'));
 }
 }

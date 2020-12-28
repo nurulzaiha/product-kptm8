@@ -22,7 +22,7 @@ class ProductController extends Controller
 
 public function create(){
 
-    //resources/views/trainings/create.blade.php
+    //resources/views/products/create.blade.php
     return view('products.create');
 }
     
@@ -39,13 +39,20 @@ public function store(Request $request){
     $product->save();
 
     //return redirect back
-    return redirect()->back();
+    //return redirect()->back();
+    //ganti ini utk tambah alert
+
+    return redirect()
+    ->route('product:list')
+    ->with([
+        'alert-type'=>'alert-primary',
+        'alert'=> 'Your training has been created!']);
 }
 
 public function show($id){
     //find id on table using model
     $product = Product ::find($id);
-//dd($training);
+//dd($product);
     //return to view
     return view('products.show', compact('product'));
 }
@@ -58,25 +65,37 @@ public function edit($id){
     return view('products.edit', compact('product'));
 }
 //public function update($id,Request $request){ -- ni asal xinstatiate
-//public function update(training $training,Request $request){ --find dah instatiate
-    // $training = Training ::find($id); --xpyh dah ltk kalo dah instatiate
+//public function update(product $product,Request $request){ --find dah instatiate
+    // $product = Product ::find($id); --xpyh dah ltk kalo dah instatiate
 public function update($id,Request $request){
     //find id at table
     $product = Product ::find($id);
 
-    //update training
+    //update product
     //method 1-popo(xguna ni)
     //method 2-mass assignment (so guna ni)-define fillable input property kat model
-    //$training ->update($request->all()); --ni utk update semua
+    //$product ->update($request->all()); --ni utk update semua
     $product ->update($request->only('name','description','price'));
 
-    //return to training
-    return redirect()->route('product:list');
+    //return to product
+    //return redirect()->route('product:list');
+    return redirect()
+    ->route('product:list')
+    ->with([
+        'alert-type'=>'alert-success',
+        'alert'=> 'Your training has been updated!']);
+
 }
 
 public function delete(Product $product){
     $product->delete();
-    return redirect()->route('product:list');
+    
+    //return redirect()->route('product:list');
+    return redirect()
+    ->route('product:list')
+    ->with([
+        'alert-type'=>'alert-danger',
+        'alert'=> 'Your training has been deleted!']);
 }
 
 }
